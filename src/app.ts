@@ -1,0 +1,20 @@
+import express from 'express';
+import cors from 'cors';
+import health from './routes/health';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import users from './routes/users';
+import products from './routes/products';
+import productoxcategoria from './routes/productoxcategoria';
+import productImg from './routes/productimg';
+
+export const app = express();
+app.use(cors({ origin: process.env.FRONT_ORIGIN, credentials: true }));
+app.use(express.json());
+app.use('/health', health);
+app.use(helmet());
+app.use(morgan('dev'));
+app.use('/users', users);
+app.use('/products', products);
+app.use('/productoxcategoria', productoxcategoria);
+app.use('/productimg', productImg);
