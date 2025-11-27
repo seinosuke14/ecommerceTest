@@ -1,3 +1,4 @@
+import { Validator } from '../helpers/validator';
 import User from '../models/users';
 import { Request, Response } from 'express';
 
@@ -9,7 +10,7 @@ export async function getAll(_req: Request, res: Response) {
           'id',
           'nombre',
           'email',
-          'edad'
+          'rol'
         ]
       }
     );
@@ -28,7 +29,7 @@ export async function getById(req: Request, res: Response) {
         'id',
         'nombre',
         'email',
-        'edad'
+        'rol'
       ]
     });
     if (!row) return res.sendStatus(404);
@@ -41,10 +42,32 @@ export async function getById(req: Request, res: Response) {
 
 export async function Post(req: Request, res: Response) {
   try {
-    const { name, correo, clave } = req.body;
-    if (!name) return res.status(400).json({ error: 'name requerido' });
-    const row = await User.create({ name, correo, clave });
-    res.status(201).json(row);
+    const { name, correo, contraseña, rol } = req.body;
+
+    // Validaciones
+    if (!Validator.isNotEmpty(name)) return res.status(400).json({ error: 'name requerido' });
+    if (!Validator.isValidEmail(correo)) return res.status(400).json({ error: 'correo requerido' });
+    if (!Validator.isValidPassword(contraseña, 6)) return res.status(400).json({ error: 'contraseña requerida' });
+
+
+    // Verificar si el correo ya existe
+    const existe = await User.findOne({ where: { correo } });
+    if (existe) {
+      return res.status(400).json({ error: 'El correo ya está registrado' });
+    }
+
+    // Crear usuario (el hook beforeCreate hasheará la contraseña)
+    const row = await User.create({ name, correo, contraseña, rol });
+
+    // Respuesta sin contraseña
+    const userResponse = {
+      id: row.id,
+      name: row.name,
+      correo: row.correo,
+      rol: row.rol
+    };
+
+    res.status(201).json(userResponse);
   } catch (error) {
     console.error('Error creating user:', error);
     return res.status(500).json({ error: 'Internal server error' });
