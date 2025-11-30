@@ -1,6 +1,7 @@
 import { Validator } from '../helpers/validator';
 import User from '../models/users';
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 
 export async function getAll(_req: Request, res: Response) {
   try {
@@ -158,9 +159,23 @@ export async function login(req: Request, res: Response) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
-    // Login exitoso
+    // ✨ GENERAR TOKEN JWT
+    const token = jwt.sign(
+      {
+        id: user.id,
+        correo: user.correo,
+        rol: user.rol
+      },
+      process.env.JWT_SECRET || 'tu-secreto-super-seguro-cambiame', // ⚠️ IMPORTANTE: Cambiar en producción
+      {
+        expiresIn: '7d' // El token expira en 7 días
+      }
+    );
+
+    // Login exitoso con token
     res.json({
       message: 'Login exitoso',
+      token, // ⭐ Agregar el token en la respuesta
       user: {
         id: user.id,
         name: user.name,
