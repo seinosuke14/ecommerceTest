@@ -1,7 +1,14 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/db';
 
-class Products extends Model { }
+class Products extends Model {
+  declare id: number;
+  declare nombre: string;
+  declare price?: string;
+  declare sku?: string;
+  declare discount?: string;
+  declare descriptions?: string;
+}
 Products.init({
   id: {
     type: DataTypes.INTEGER,
@@ -30,12 +37,6 @@ Products.init({
     type: DataTypes.STRING,
     allowNull: true,
     field: 'discount'
-  },
-  url_image:
-  {
-    type: DataTypes.STRING,
-    allowNull: true,
-    field: 'url_image'
   },
   descriptions:
   {
