@@ -2,7 +2,13 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/db';
 
 
-class ProductImg extends Model { }
+class ProductImg extends Model {
+    declare id: number;
+    declare product_id: number;
+    declare url_image: string;
+    declare orden: number;
+    declare es_principal: number;
+}
 ProductImg.init({
     id: {
         type: DataTypes.INTEGER,
@@ -14,7 +20,7 @@ ProductImg.init({
         allowNull: false,
         field: 'product_id'
     },
-    url_img: {
+    url_image: {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'url_image'

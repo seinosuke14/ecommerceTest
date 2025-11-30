@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllProducts, PutProducts, PostProducts,DeletebyId,getByIdProducts} from "../controllers/products";
+import { getAllProducts, PutProducts, PostProducts, DeletebyId, getByIdProducts, bulkCreateProduct } from "../controllers/products";
 const r = Router();
 
 
@@ -8,5 +8,6 @@ r.get("/:id", getByIdProducts);
 r.post("/", PostProducts);
 r.put("/:id", PutProducts);
 r.delete("/:id", DeletebyId);
+r.post("/bulk", bulkCreateProduct);
 
 export default r;

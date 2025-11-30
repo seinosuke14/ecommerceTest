@@ -60,10 +60,10 @@ export class ProductImgController {
     // ============================================
     static async create(req: Request, res: Response) {
         try {
-            const { product_id, url_img, orden, es_principal } = req.body;
+            const { product_id, url_image, orden, es_principal } = req.body;
 
             // Validación básica
-            if (!product_id || !url_img) {
+            if (!product_id || !url_image) {
                 return res.status(400).json({
                     success: false,
                     message: 'Faltan campos obligatorios'
@@ -72,7 +72,7 @@ export class ProductImgController {
 
             const newImage = await ProductImg.create({
                 product_id,
-                url_img,
+                url_image,
                 orden: orden || 0,
                 es_principal: es_principal || 0 // ✅ Cambiado de 'N' a 0
             });
