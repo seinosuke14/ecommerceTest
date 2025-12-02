@@ -7,6 +7,12 @@ import users from './routes/users';
 import products from './routes/products';
 import productoxcategoria from './routes/productoxcategoria';
 import productImg from './routes/productimg';
+import menu from './routes/menu';
+
+
+
+
+
 
 export const app = express();
 app.use(cors({ origin: process.env.FRONT_ORIGIN, credentials: true }));
@@ -18,3 +24,6 @@ app.use('/users', users);
 app.use('/products', products);
 app.use('/productoxcategoria', productoxcategoria);
 app.use('/productimg', productImg);
+app.use('/menus', menu);
+
+
