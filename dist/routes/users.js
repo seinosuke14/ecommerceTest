@@ -2,10 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const users_1 = require("../controllers/users");
+const auth_1 = require("../middleware/auth");
 const r = (0, express_1.Router)();
-r.get('/', users_1.getAll);
-r.get('/:id', users_1.getById);
-r.post('/', users_1.Post);
-r.put('/:id', users_1.Put);
-r.delete('/:id', users_1.deleteById);
+r.post('/login', users_1.login);
+r.post('/register', users_1.Post);
+r.get('/users', auth_1.authenticateToken, users_1.getAll);
+r.get('/:id', auth_1.authenticateToken, users_1.getById);
+r.put('/:id', auth_1.authenticateToken, users_1.Put);
+r.delete('/:id', auth_1.authenticateToken, users_1.deleteById);
 exports.default = r;

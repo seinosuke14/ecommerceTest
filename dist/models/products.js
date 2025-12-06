@@ -11,19 +11,29 @@ Products.init({
         primaryKey: true
     },
     nombre: {
-        type: sequelize_1.DataTypes.STRING(300),
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
-        field: 'vch_nombre'
+        field: 'nombre'
     },
     price: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: true,
-        field: 'int_precio'
+        field: 'price'
     },
     sku: {
-        type: sequelize_1.DataTypes.STRING(150),
+        type: sequelize_1.DataTypes.STRING,
         allowNull: true,
-        field: 'vch_sku'
+        field: 'sku'
+    },
+    discount: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+        field: 'discount'
+    },
+    descriptions: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+        field: 'descriptions'
     },
 }, { sequelize: db_1.sequelize, tableName: 'products', timestamps: false });
 exports.default = Products;

@@ -8,4 +8,5 @@ r.get("/:id", products_1.getByIdProducts);
 r.post("/", products_1.PostProducts);
 r.put("/:id", products_1.PutProducts);
 r.delete("/:id", products_1.DeletebyId);
+r.post("/bulk", products_1.bulkCreateProduct);
 exports.default = r;

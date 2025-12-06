@@ -11,7 +11,7 @@ import {
 const router = Router();
 
 // Rutas públicas
-router.get('/menus/disponibles', obtenerMenusDisponibles);
+router.get('/disponibles', obtenerMenusDisponibles);
 router.get('/menus/:id', obtenerMenuPorId);
 
 // Rutas admin (agrega tu middleware de autenticación si lo tienes)
