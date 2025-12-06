@@ -6,8 +6,8 @@ class Categoria extends sequelize_1.Model {
 }
 Categoria.init({
     id: {
-        type: sequelize_1.DataTypes.UUID,
-        autoIncrement: true,
+        type: sequelize_1.DataTypes.CHAR(36),
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true
     },
     vch_nombre: {
