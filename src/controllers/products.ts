@@ -42,7 +42,7 @@ export async function getByIdProducts(req: Request, res: Response) {
         },
         {
           model: ProductImg,
-          as: "imagenes", // ✅ Agrega esto
+          as: "imagenes",
           attributes: ["id", "url_image", "orden", "es_principal"]
         }
       ],
