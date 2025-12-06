@@ -8,5 +8,5 @@ const port = Number(process.env.PORT) || 3001;
 (async () => {
     await db_1.sequelize.authenticate();
     // await sequelize.sync({ alter: true }); // DEV: crea/ajusta tablas según modelos
-    app_1.app.listen(port, () => console.log(`API :${port}`));
+    app_1.app.listen(port, '0.0.0.0', () => console.log(`API :${port}`));
 })();
