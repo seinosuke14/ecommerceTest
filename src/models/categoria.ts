@@ -4,8 +4,8 @@ import { sequelize } from '../config/db';
 class Categoria extends Model { }
 Categoria.init({
     id: {
-        type: DataTypes.UUID,
-        autoIncrement: true,
+        type: DataTypes.CHAR(36),
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true
     },
     vch_nombre: {
