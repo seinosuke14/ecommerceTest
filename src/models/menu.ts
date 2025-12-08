@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/db';
 
 
-export class menu extends Model {
+export class Menu extends Model {
     declare id: number;
     declare nombre: string;
     declare descripcion: string;
@@ -15,7 +15,7 @@ export class menu extends Model {
 
 }
 
-menu.init({
+Menu.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -65,4 +65,4 @@ menu.init({
     timestamps: false,
 });
 
-export default menu;
+export default Menu;

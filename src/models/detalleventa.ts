@@ -1,9 +1,19 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/db';
 
+export class DetalleVenta extends Model {
+    declare id: number;
+    declare venta_id: number;
+    declare producto_id: number;
+    declare nombre_producto: string;
+    declare sku: string | null;
+    declare cantidad: number;
+    declare precio_unitario: number;
+    declare descuento_unitario: number;
+    declare subtotal: number;
+}
 
-
-const DetalleVenta = sequelize.define('DetalleVenta', {
+DetalleVenta.init({
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -50,8 +60,9 @@ const DetalleVenta = sequelize.define('DetalleVenta', {
         allowNull: false
     }
 }, {
+    sequelize,
     tableName: 'detalle_ventas',
     timestamps: false
 });
 
-module.exports = DetalleVenta;
+export default DetalleVenta;
