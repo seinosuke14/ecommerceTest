@@ -8,6 +8,7 @@ import products from './routes/products';
 import productoxcategoria from './routes/productoxcategoria';
 import productImg from './routes/productimg';
 import menu from './routes/menu';
+import ventas from './routes/venta';
 
 
 
@@ -25,5 +26,6 @@ app.use('/products', products);
 app.use('/productoxcategoria', productoxcategoria);
 app.use('/productimg', productImg);
 app.use('/menus', menu);
+app.use('/ventas', ventas);
 
 

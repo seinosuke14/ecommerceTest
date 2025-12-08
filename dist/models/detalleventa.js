@@ -1,8 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DetalleVenta = void 0;
 const sequelize_1 = require("sequelize");
 const db_1 = require("../config/db");
-const DetalleVenta = db_1.sequelize.define('DetalleVenta', {
+class DetalleVenta extends sequelize_1.Model {
+}
+exports.DetalleVenta = DetalleVenta;
+DetalleVenta.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
@@ -49,7 +53,8 @@ const DetalleVenta = db_1.sequelize.define('DetalleVenta', {
         allowNull: false
     }
 }, {
+    sequelize: db_1.sequelize,
     tableName: 'detalle_ventas',
     timestamps: false
 });
-module.exports = DetalleVenta;
+exports.default = DetalleVenta;

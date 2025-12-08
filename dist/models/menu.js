@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.menu = void 0;
+exports.Menu = void 0;
 const sequelize_1 = require("sequelize");
 const db_1 = require("../config/db");
-class menu extends sequelize_1.Model {
+class Menu extends sequelize_1.Model {
 }
-exports.menu = menu;
-menu.init({
+exports.Menu = Menu;
+Menu.init({
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         primaryKey: true,
@@ -54,4 +54,4 @@ menu.init({
     tableName: 'menus',
     timestamps: false,
 });
-exports.default = menu;
+exports.default = Menu;
