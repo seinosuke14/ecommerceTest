@@ -34,14 +34,6 @@ Venta.init({
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    email_cliente: {
-        type: DataTypes.STRING(255),
-        allowNull: true
-    },
-    telefono_cliente: {
-        type: DataTypes.STRING(50),
-        allowNull: true
-    },
     fecha_venta: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
