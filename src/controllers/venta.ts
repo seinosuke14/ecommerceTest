@@ -247,7 +247,7 @@ export async function Put(req: Request, res: Response) {
         const { estado, notas, metodo_pago } = req.body;
 
         if (estado) {
-            const estadosValidos = ['completada', 'cancelada', 'pendiente', 'en espera'];
+            const estadosValidos = ['completada', 'cancelada', 'pendiente', 'espera', 'aprobada'];
             if (!estadosValidos.includes(estado)) {
                 return res.status(400).json({
                     error: 'Estado inválido. Valores permitidos: completada, cancelada, pendiente'
